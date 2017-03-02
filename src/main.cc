@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 
     // Display header
     std::cout << "BayesElo" << '\t' << "Elo" << '\t' << "%Pass"
-        << '\t' << "Avg";
+        << '\t' << "%Yellow" << '\t' << "Avg" << '\t' << "YellowAvg";
     for (auto& qp : quantiles)
         std::cout << "\tQ" << 100 * qp << '%';
     std::cout << std::endl;
@@ -37,7 +37,8 @@ int main(int argc, char **argv)
         const SPRT::Result _r = r.get();
         std::cout << std::fixed << std::setprecision(2) << _r.p.bayes_elo()
             << '\t' << _r.p.elo() << std::setprecision(4) << '\t' << _r.passRate
-            << std::setprecision(0) << '\t' << _r.stopAvg;
+            << '\t' << _r.yellowRate << std::setprecision(0) << '\t' << _r.stopAvg
+            << '\t' << _r.yellowAvg;
         for (auto& qv : _r.quantileValue)
             std::cout << '\t' << qv;
         std::cout << std::endl;

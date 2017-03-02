@@ -1,11 +1,13 @@
 #include <vector>
 #include "stat.h"
 
+enum {GREEN, YELLOW, RED};
+
 namespace SPRT {
 
 struct Result {
     Probability p;
-    double passRate, stopAvg;
+    double passRate, yellowRate, stopAvg, yellowAvg;
     std::vector<size_t> quantileValue;
 };
 
